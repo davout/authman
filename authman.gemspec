@@ -23,5 +23,6 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
 
   s.bindir = 'bin'
+  s.executables << 'authman'
 end
 
