@@ -9,7 +9,7 @@ module Authman
     def initialize(filename = '~/.authman.asc')
       f = File.expand_path(filename)
 
-      if File.exists?(f) 
+      if File.exist?(f)
         @settings         = JSON.load(GPGME::Crypto.new.decrypt(open(f).read))
         @totps            = @settings.inject({}) { |ts, s| ts[s[0]] = ROTP::TOTP.new(s[1]); ts }
         @max_name_length  = @settings.map { |k,v| k.length }.max
